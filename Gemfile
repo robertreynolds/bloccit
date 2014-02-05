@@ -35,6 +35,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'faker'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
