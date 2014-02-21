@@ -7,11 +7,11 @@ class Ability
     # if a member, they can manage their own posts 
     # (or create new ones)
     if user.role? :member
-      can :manage, Post, :user_id => user.id
-      can :manage, Comment, :user_id => user.id
-      can :create, Vote  
-      #what would happen if we used manage? why dont we need the userid to user id
+      can :manage, Post, user_id: user.id
+      can :manage, Comment, user_id: user.id
+      can :create, Vote
       can :manage, Favorite, user_id: user.id
+      can :read, Topic #why did we need this here if we said it below
     end
 
     # Moderators can delete any post
@@ -25,6 +25,8 @@ class Ability
       can :manage, :all
     end
 
-    can :read, :all
+#are all models aware of all other models/controllers - like how we can write Topic and Post here
+    can :read, Topic, public: true
+    can :read, Post
   end
 end
