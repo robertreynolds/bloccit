@@ -9,7 +9,9 @@ class Ability
     if user.role? :member
       can :manage, Post, :user_id => user.id
       can :manage, Comment, :user_id => user.id
-      can :create, Vote  #what would happen if we used manage? why dont we need the userid to user id
+      can :create, Vote  
+      #what would happen if we used manage? why dont we need the userid to user id
+      can :manage, Favorite, user_id: user.id
     end
 
     # Moderators can delete any post
